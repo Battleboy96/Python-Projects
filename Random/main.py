@@ -1,4 +1,4 @@
-# Don't ask what this does! I have no idea and can't be bothered to read it.
+# I read what this does. It really is just random, could be streamlined a bit though.
 import sys
 import time
 import random
