@@ -18,5 +18,7 @@ A program from my attempt to learn Tkinter with Claude. (Didn't stick either)
 
 I've been working on this for a few hours, I only started at ~12:30pm of this file's commit date. I'm making the current versions beta and 1.0 will be when I've worked out most, if not all the bugs and added the features I want to (mainly error handling).
 
+All current beta versions now available in the [Releases](https://github.com/Battleboy96/Python-Projects/releases) tab!
+
 ## Conclusion
 Let me know what else I should make and enjoy what I have, I guess!
