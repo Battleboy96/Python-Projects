@@ -17,7 +17,7 @@ def main():
         quotient, remainder = divmod(improper_nurmirator, improper_denominator)
         print(quotient, "and", remainder, "/", improper_denominator)
     
-    print("Welcome to the mixed fraction converter (1.1)!\nTurn mixed fractions into improper fractions!")
+    print("Welcome to the mixed fraction converter (0.2)!\nTurn mixed fractions into improper fractions!")
     time.sleep(0.3)
     print("This is a work in progress, please report any bugs you find")
     print("")
