@@ -7,7 +7,6 @@ time.sleep(0.3)
 
 # Program loop
 def main():
-
     def check_int(type):
         while True:
             try:
