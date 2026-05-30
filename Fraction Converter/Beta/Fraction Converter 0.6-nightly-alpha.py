@@ -21,6 +21,12 @@ def main():
             except ValueError:
                 print("Please input a number")
 
+    def sign_flip(denominator, numerator):
+        if denominator < 0:
+            denominator *= -1
+            numerator *= -1
+        return denominator, numerator
+
     # Create Mixed to Improper function
     def M2I():
         mixed_whole = check_int("whole number")
@@ -36,17 +42,26 @@ def main():
         improper_numerator = check_int("numerator")
         improper_denominator = check_int("denominator", allow_zero=False)
 
-        quotient, remainder = divmod(improper_numerator, improper_denominator)
+        if improper_denominator < 0 or improper_numerator < 0:
+            is_negative = True
+
+        elif improper_denominator > 0 and improper_numerator > 0:
+            is_negative = False
+
+        abs_numerator = abs(improper_numerator)
+        abs_denominator = abs(improper_denominator)
+        quotient, remainder = divmod(abs_numerator, abs_denominator)
         if remainder == 0:
             print(quotient)
         else:
-            print(f"{quotient} and {remainder}/{improper_denominator}")
+            print(f"{quotient} and {remainder}/{abs_denominator}")
         input("Press enter to continue...")
 
     # Create Simplify function
     def Simplify():
         numerator = check_int("numerator")
         denominator = check_int("denominator", allow_zero=False)
+        denominator, numerator = sign_flip(denominator, numerator)
 
         common_divisor = math.gcd(numerator, denominator)
         simplified_numerator = numerator // common_divisor
@@ -67,12 +82,14 @@ def main():
     def F2D():
         numerator = check_int("numerator")
         denominator = check_int("denominator", allow_zero=False)
+        denominator, numerator = sign_flip(denominator, numerator)
+        
         if denominator == 0:
             print("Error: Denominator cannot be zero.")
             input("Press enter to continue...")
             return
         decimal = numerator / denominator
-        print(f"{decimal}")
+        print(f"{round(decimal, 4)}")
 
     # Mode Select
     while True:
