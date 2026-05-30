@@ -20,5 +20,15 @@ I've been working on this for a few hours, I only started at ~12:30pm of this fi
 
 All current beta versions now available in the [Releases](https://github.com/Battleboy96/Python-Projects/releases) tab!
 
+## Python Modules/Packages
+
+I've made a Python module! At the moment it's a super simple function that replicates the number input error handling from my fraction calculator with a single line of code! You can get it at [PyPi](https://pypi.org/project/int-checker/) or by using
+
+```bash
+pip3 install int-checker
+```
+
+I'm super proud of my first module and hope it shows it's use to others. I may or may not update it so if you use it or think there are some features I could add, let me know!
+
 ## Conclusion
 Let me know what else I should make and enjoy what I have, I guess!
