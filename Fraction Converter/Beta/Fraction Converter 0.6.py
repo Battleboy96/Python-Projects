@@ -8,12 +8,12 @@ time.sleep(0.3)
 
 # Program loop
 def main():
-    def CheckInt(type, allow_zero=True):
+    def CheckInt(type, AllowZero=True):
         while True:
             try:
                 variable = int(input(f"Please input the {type}: "))
 
-                if not allow_zero and variable == 0:
+                if not AllowZero and variable == 0:
                     print("Error: This number cannot be zero.")
                     continue # Loops back to try again without crashing or exiting!
 
@@ -29,56 +29,56 @@ def main():
 
     # Create Mixed to Improper function
     def MixedToImproper():
-        mixed_whole = CheckInt("whole number")
-        mixed_numerator = CheckInt("numerator")
-        mixed_denominator = CheckInt("denominator", allow_zero=False)
+        MixedWhole = CheckInt("whole number")
+        MixedNumerator = CheckInt("numerator")
+        MixedDenominator = CheckInt("denominator", AllowZero=False)
         
-        is_negative = (mixed_whole < 0) or (mixed_numerator < 0) or (mixed_denominator < 0)
+        IsNegative = (MixedWhole < 0) or (MixedNumerator < 0) or (MixedDenominator < 0)
         
-        abs_whole = abs(mixed_whole)
-        abs_numerator = abs(mixed_numerator)
-        abs_denominator = abs(mixed_denominator)
+        AbsWhole = abs(MixedWhole)
+        AbsNumerator = abs(MixedNumerator)
+        AbsDenominator = abs(MixedDenominator)
         
-        improper_numerator = abs_whole * abs_denominator + abs_numerator
+        ImproperNumerator = AbsWhole * AbsDenominator + AbsNumerator
         
-        if is_negative == True:
-            print(f"-{improper_numerator}/{abs_denominator}")
+        if IsNegative == True:
+            print(f"-{ImproperNumerator}/{AbsDenominator}")
         else:
-            print(f"{improper_numerator}/{abs_denominator}")
+            print(f"{ImproperNumerator}/{AbsDenominator}")
 
         input("Press enter to continue...")
 
     # Create Improper to Mixed function
     def ImproperToMixed():
-        improper_numerator = CheckInt("numerator")
-        improper_denominator = CheckInt("denominator", allow_zero=False)
+        ImproperNumerator = CheckInt("numerator")
+        ImproperDenominator = CheckInt("denominator", AllowZero=False)
 
-        if (improper_numerator < 0) != (improper_denominator < 0):
-            is_negative = True
+        if (ImproperNumerator < 0) != (ImproperDenominator < 0):
+            IsNegative = True
         else:
-            is_negative = False
+            IsNegative = False
 
-        abs_numerator = abs(improper_numerator)
-        abs_denominator = abs(improper_denominator)
-        quotient, remainder = divmod(abs_numerator, abs_denominator)
-        if remainder == 0:
-            if is_negative:
-                print(f"-{quotient}")
+        AbsNumerator = abs(ImproperNumerator)
+        AbsDenominator = abs(ImproperDenominator)
+        Quotient, Remainder = divmod(AbsNumerator, AbsDenominator)
+        if Remainder == 0:
+            if IsNegative:
+                print(f"-{Quotient}")
 
             else:
-                print(quotient)
+                print(Quotient)
 
         else:
-            if is_negative == True:
-                print(f"-{quotient} and {remainder}/{abs_denominator}")
+            if IsNegative == True:
+                print(f"-{Quotient} and {Remainder}/{AbsDenominator}")
             else:
-                print(f"{quotient} and {remainder}/{abs_denominator}")
+                print(f"{Quotient} and {Remainder}/{AbsDenominator}")
         input("Press enter to continue...")
 
     # Create Simplify function
     def Simplify():
         numerator = CheckInt("numerator")
-        denominator = CheckInt("denominator", allow_zero=False)
+        denominator = CheckInt("denominator", AllowZero=False)
         denominator, numerator = SignFlip(denominator, numerator)
 
         common_divisor = math.gcd(numerator, denominator)
@@ -99,7 +99,7 @@ def main():
 
     def FractionToDecimal():
         numerator = CheckInt("numerator")
-        denominator = CheckInt("denominator", allow_zero=False)
+        denominator = CheckInt("denominator", AllowZero=False)
         denominator, numerator = SignFlip(denominator, numerator)
         
         if denominator == 0:
