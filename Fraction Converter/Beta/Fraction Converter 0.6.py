@@ -8,7 +8,7 @@ time.sleep(0.3)
 
 # Program loop
 def main():
-    def check_int(type, allow_zero=True):
+    def CheckInt(type, allow_zero=True):
         while True:
             try:
                 variable = int(input(f"Please input the {type}: "))
@@ -21,47 +21,65 @@ def main():
             except ValueError:
                 print("Please input a number")
 
-    def sign_flip(denominator, numerator):
+    def SignFlip(denominator, numerator):
         if denominator < 0:
             denominator *= -1
             numerator *= -1
         return denominator, numerator
 
     # Create Mixed to Improper function
-    def M2I():
-        mixed_whole = check_int("whole number")
-        mixed_numerator = check_int("numerator")
-        mixed_denominator = check_int("denominator", allow_zero=False)
+    def MixedToImproper():
+        mixed_whole = CheckInt("whole number")
+        mixed_numerator = CheckInt("numerator")
+        mixed_denominator = CheckInt("denominator", allow_zero=False)
+        
+        is_negative = (mixed_whole < 0) or (mixed_numerator < 0) or (mixed_denominator < 0)
+        
+        abs_whole = abs(mixed_whole)
+        abs_numerator = abs(mixed_numerator)
+        abs_denominator = abs(mixed_denominator)
+        
+        improper_numerator = abs_whole * abs_denominator + abs_numerator
+        
+        if is_negative == True:
+            print(f"-{improper_numerator}/{abs_denominator}")
+        else:
+            print(f"{improper_numerator}/{abs_denominator}")
 
-        improper_numerator = str(mixed_whole * mixed_denominator + mixed_numerator)
-        print(f"{improper_numerator}/{mixed_denominator}")
         input("Press enter to continue...")
 
     # Create Improper to Mixed function
-    def I2M():
-        improper_numerator = check_int("numerator")
-        improper_denominator = check_int("denominator", allow_zero=False)
+    def ImproperToMixed():
+        improper_numerator = CheckInt("numerator")
+        improper_denominator = CheckInt("denominator", allow_zero=False)
 
-        if improper_denominator < 0 or improper_numerator < 0:
+        if (improper_numerator < 0) != (improper_denominator < 0):
             is_negative = True
-
-        elif improper_denominator > 0 and improper_numerator > 0:
+        else:
             is_negative = False
 
         abs_numerator = abs(improper_numerator)
         abs_denominator = abs(improper_denominator)
         quotient, remainder = divmod(abs_numerator, abs_denominator)
         if remainder == 0:
-            print(quotient)
+            if is_negative:
+                print(f"-{quotient}")
+
+            else:
+                print(quotient)
+
         else:
-            print(f"{quotient} and {remainder}/{abs_denominator}")
+            if is_negative == True:
+                print(f"-{quotient} and {remainder}/{abs_denominator}")
+            else:
+                print(f"{quotient} and {remainder}/{abs_denominator}")
         input("Press enter to continue...")
 
     # Create Simplify function
     def Simplify():
-        numerator = check_int("numerator")
-        denominator = check_int("denominator", allow_zero=False)
-        denominator, numerator = sign_flip(denominator, numerator)
+        numerator = CheckInt("numerator")
+        denominator = CheckInt("denominator", allow_zero=False)
+        denominator, numerator = SignFlip(denominator, numerator)
 
         common_divisor = math.gcd(numerator, denominator)
         simplified_numerator = numerator // common_divisor
@@ -79,10 +97,10 @@ def main():
 
         input("Press enter to continue...")
 
-    def F2D():
-        numerator = check_int("numerator")
-        denominator = check_int("denominator", allow_zero=False)
-        denominator, numerator = sign_flip(denominator, numerator)
+    def FractionToDecimal():
+        numerator = CheckInt("numerator")
+        denominator = CheckInt("denominator", allow_zero=False)
+        denominator, numerator = SignFlip(denominator, numerator)
         
         if denominator == 0:
             print("Error: Denominator cannot be zero.")
@@ -102,13 +120,13 @@ def main():
             print("Please input a number")
 
         if mode == 1:
-            M2I()
+            MixedToImproper()
         if mode == 2:
-            I2M()
+            ImproperToMixed()
         if mode == 3:
             Simplify()
         if mode == 4:
-            F2D()
+            FractionToDecimal()
         if mode == 5:
             print("Exiting...")
             time.sleep(0.3)
