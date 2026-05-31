@@ -11,27 +11,27 @@ def main():
     def CheckInt(type, AllowZero=True):
         while True:
             try:
-                variable = int(input(f"Please input the {type}: "))
+                Variable = int(input(f"Please input the {type}: "))
 
-                if not AllowZero and variable == 0:
+                if not AllowZero and Variable == 0:
                     print("Error: This number cannot be zero.")
                     continue # Loops back to try again without crashing or exiting!
 
-                return variable
+                return Variable
             except ValueError:
                 print("Please input a number")
 
-    def SignFlip(denominator, numerator):
-        if denominator < 0:
-            denominator *= -1
-            numerator *= -1
-        return denominator, numerator
+    def SignFlip(Denominator, Numerator):
+        if Denominator < 0:
+            Denominator *= -1
+            Numerator *= -1
+        return Denominator, Numerator
 
     # Create Mixed to Improper function
     def MixedToImproper():
         MixedWhole = CheckInt("whole number")
-        MixedNumerator = CheckInt("numerator")
-        MixedDenominator = CheckInt("denominator", AllowZero=False)
+        MixedNumerator = CheckInt("Numerator")
+        MixedDenominator = CheckInt("Denominator", AllowZero=False)
         
         IsNegative = (MixedWhole < 0) or (MixedNumerator < 0) or (MixedDenominator < 0)
         
@@ -50,8 +50,8 @@ def main():
 
     # Create Improper to Mixed function
     def ImproperToMixed():
-        ImproperNumerator = CheckInt("numerator")
-        ImproperDenominator = CheckInt("denominator", AllowZero=False)
+        ImproperNumerator = CheckInt("Numerator")
+        ImproperDenominator = CheckInt("Denominator", AllowZero=False)
 
         if (ImproperNumerator < 0) != (ImproperDenominator < 0):
             IsNegative = True
@@ -77,36 +77,36 @@ def main():
 
     # Create Simplify function
     def Simplify():
-        numerator = CheckInt("numerator")
-        denominator = CheckInt("denominator", AllowZero=False)
-        denominator, numerator = SignFlip(denominator, numerator)
+        Numerator = CheckInt("Numerator")
+        Denominator = CheckInt("Denominator", AllowZero=False)
+        Denominator, Numerator = SignFlip(Denominator, Numerator)
 
-        common_divisor = math.gcd(numerator, denominator)
-        simplified_numerator = numerator // common_divisor
-        simplified_denominator = denominator // common_divisor
+        CommonDivisor = math.gcd(Numerator, Denominator)
+        SimplifiedNumerator = Numerator // CommonDivisor
+        SimplifiedDenominator = Denominator // CommonDivisor
 
-        if simplified_denominator == 1:
-            print(f"{simplified_numerator}")
+        if SimplifiedDenominator == 1:
+            print(f"{SimplifiedNumerator}")
 
-        elif common_divisor == 1:
+        elif CommonDivisor == 1:
             print("This fraction is already in its simplest form!")
-            print(f"{numerator}/{denominator}")
+            print(f"{Numerator}/{Denominator}")
 
         else:
-            print(f"{simplified_numerator}/{simplified_denominator}")
+            print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
 
         input("Press enter to continue...")
 
     def FractionToDecimal():
-        numerator = CheckInt("numerator")
-        denominator = CheckInt("denominator", AllowZero=False)
-        denominator, numerator = SignFlip(denominator, numerator)
+        Numerator = CheckInt("Numerator")
+        Denominator = CheckInt("Denominator", AllowZero=False)
+        Denominator, Numerator = SignFlip(Denominator, Numerator)
         
-        if denominator == 0:
+        if Denominator == 0:
             print("Error: Denominator cannot be zero.")
             input("Press enter to continue...")
             return
-        decimal = numerator / denominator
+        decimal = Numerator / Denominator
         print(f"{round(decimal, 4)}")
 
     # Mode Select
