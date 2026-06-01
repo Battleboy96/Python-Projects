@@ -1,8 +1,10 @@
 import time
 import math
+import fractions
 
 # Disclaimer
-print("This is a work in progress, please report any bugs you find")
+print("Fraction Converter 1.0 - By: Battleboy96")
+print("Stable Release")
 print("")
 time.sleep(0.3)
 
@@ -109,11 +111,28 @@ def main():
         decimal = Numerator / Denominator
         print(f"{round(decimal, 4)}")
 
+    def DecimalToFraction():
+        while True:
+            Decimal = input("Please input a decimal number: ")
+            
+            try:
+                ConvertedFraction = fractions.Fraction(Decimal)
+                Numerator = ConvertedFraction.numerator
+                Denominator = ConvertedFraction.denominator
+
+            except ValueError:
+                print("Please input a valid decimal number")
+                continue
+
+            print(f"{Numerator}/{Denominator}")
+            input("Press enter to continue...")
+            return
+
     # Mode Select
     while True:
         try:
-            mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Exit\n"))
-            if mode < 1 or mode > 5:
+            mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Decimal to Fraction\n6: Exit\n"))
+            if mode < 1 or mode > 6:
                 print("Please select a valid mode")
                 continue
         except ValueError:
@@ -128,6 +147,8 @@ def main():
         if mode == 4:
             FractionToDecimal()
         if mode == 5:
+            DecimalToFraction()
+        if mode == 6:
             print("Exiting...")
             time.sleep(0.3)
             exit(0)
