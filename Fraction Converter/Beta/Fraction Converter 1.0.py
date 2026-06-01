@@ -2,7 +2,7 @@ import time
 import math
 import fractions
 
-# Disclaimer
+# Open Message
 print("Fraction Converter 1.0 - By: Battleboy96")
 print("Stable Release")
 print("")
