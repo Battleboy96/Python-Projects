@@ -99,6 +99,7 @@ def main():
 
         input("Press enter to continue...")
 
+    # Create Fraction to Decimal function
     def FractionToDecimal():
         Numerator = CheckInt("Numerator")
         Denominator = CheckInt("Denominator", AllowZero=False)
@@ -111,6 +112,7 @@ def main():
         decimal = Numerator / Denominator
         print(f"{round(decimal, 4)}")
 
+    # Create Decimal to Fraction function
     def DecimalToFraction():
         while True:
             Decimal = input("Please input a decimal number: ")
