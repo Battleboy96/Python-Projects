@@ -130,11 +130,39 @@ def main():
             input("Press enter to continue...")
             return
 
+    # Create addition function
+    def Addition():
+        FirstNumerator = CheckInt("first numerator")
+        FirstDenominator = CheckInt("first denominator", AllowZero=False)
+        SecondNumerator = CheckInt("second numerator")
+        SecondDenominator = CheckInt("second denominator", AllowZero=False)
+        
+        if FirstDenominator == SecondDenominator:
+            ResultNumerator = FirstNumerator + SecondNumerator
+            print(f"{ResultNumerator}/{FirstDenominator}")
+        else:
+            # Stopped here. Unfinished
+
+    # Create arithmatic options menu
+    def Arithmatic():
+        print("This mode is currently under development!")
+        input("Press enter to continue...")
+        
+        ArithmaticMode = int(input("Please select an arithmatic mode:\n1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Return to main menu\n"))
+        if ArithmaticMode == 1:
+            Addition()
+        if ArithmaticMode == 2:
+            Subtraction()
+        if ArithmaticMode == 3:
+            Multiplication()
+        if ArithmaticMode == 4:
+            Division()
+
     # Mode Select
     while True:
         try:
-            mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Decimal to Fraction\n6: Exit\n"))
-            if mode < 1 or mode > 6:
+            Mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Decimal to Fraction\n6: Exit\n"))
+            if Mode < 1 or Mode > 6:
                 print("Please select a valid mode")
                 continue
         except ValueError:
