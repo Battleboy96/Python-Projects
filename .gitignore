@@ -1,3 +1,6 @@
 build/
 dist/
 *.spec
+changes.txt
+.vscode
+Some Game.txt

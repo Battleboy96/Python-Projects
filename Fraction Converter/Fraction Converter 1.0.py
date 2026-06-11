@@ -96,7 +96,6 @@ def main():
 
         else:
             print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
-
         input("Press enter to continue...")
 
     # Create Fraction to Decimal function
@@ -111,6 +110,7 @@ def main():
             return
         decimal = Numerator / Denominator
         print(f"{round(decimal, 4)}")
+        input("Press enter to continue...")
 
     # Create Decimal to Fraction function
     def DecimalToFraction():
@@ -139,6 +139,7 @@ def main():
                 continue
         except ValueError:
             print("Please input a number")
+        input("Press enter to continue...")
 
         if mode == 1:
             MixedToImproper()
