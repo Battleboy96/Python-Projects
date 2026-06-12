@@ -29,6 +29,9 @@ def main():
             Numerator *= -1
         return Denominator, Numerator
 
+    def EqualiseDenominators(FirstDenominator, FirstNumerator, SecondDenominator, SecondNumerator):
+        print("Just to hide the line error")
+
     # Create Mixed to Improper function
     def MixedToImproper():
         MixedWhole = CheckInt("whole number")
@@ -141,7 +144,8 @@ def main():
             ResultNumerator = FirstNumerator + SecondNumerator
             print(f"{ResultNumerator}/{FirstDenominator}")
         else:
-            # Stopped here. Unfinished
+            
+
 
     # Create arithmatic options menu
     def Arithmatic():
