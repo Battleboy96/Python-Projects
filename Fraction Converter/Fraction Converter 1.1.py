@@ -210,7 +210,6 @@ def main():
                 continue
         except ValueError:
             print("Please input a number")
-        input("Press enter to continue...")
 
         if Mode == 1:
             MixedToImproper()
