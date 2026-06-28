@@ -4,7 +4,7 @@ import fractions
 import os
 
 # Open Message
-print("Fraction Converter 1.0 - By: Battleboy96")
+print("Fraction Converter 1.1 - By: Battleboy96")
 print("Stable Release")
 print("")
 time.sleep(0.3)
@@ -212,19 +212,19 @@ def main():
             print("Please input a number")
         input("Press enter to continue...")
 
-        if mode == 1:
+        if Mode == 1:
             MixedToImproper()
-        if mode == 2:
+        if Mode == 2:
             ImproperToMixed()
-        if mode == 3:
+        if Mode == 3:
             Numerator = CheckInt("Numerator")
             Denominator = CheckInt("Denominator", AllowZero=False)
             Simplify(Numerator, Denominator)
-        if mode == 4:
+        if Mode == 4:
             FractionToDecimal()
-        if mode == 5:
+        if Mode == 5:
             DecimalToFraction()
-        if mode == 6:
+        if Mode == 6:
             print("Exiting...")
             time.sleep(0.3)
             os.quit(0)
