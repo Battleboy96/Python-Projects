@@ -14,11 +14,10 @@ A snake game made with Pygame with the help of Claude. Don't worry, it didn't wr
 A program from my attempt to learn Tkinter with Claude. (Didn't stick either)
 
 ## Fraction Converter
-**Now this is the big (for me) one.**
 
-I've been working on this for a few hours, I only started at ~12:30pm of this file's commit date. I'm making the current versions beta and 1.0 will be when I've worked out most, if not all the bugs and added the features I want to (mainly error handling).
+This project is aimed as a way for me to learn a lot about how Python works, it can convert fractions and decimals cleanly and (hopefully) error free. The next features planned is arithmatic and a UI. Let me know if you encounter any errors!
 
-All current beta versions now available in the [Releases](https://github.com/Battleboy96/Python-Projects/releases) tab!
+All versions are now available in the [releases](https://github.com/Battleboy96/Python-Projects/releases) tab!
 
 ## Python Modules/Packages
 

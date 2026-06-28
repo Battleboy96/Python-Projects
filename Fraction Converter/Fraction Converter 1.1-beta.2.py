@@ -1,6 +1,7 @@
 import time
 import math
 import fractions
+import sys
 
 # Open Message
 print("Fraction Converter 1.0 - By: Battleboy96")
@@ -28,9 +29,6 @@ def main():
             Denominator *= -1
             Numerator *= -1
         return Denominator, Numerator
-
-    def EqualiseDenominators(FirstDenominator, FirstNumerator, SecondDenominator, SecondNumerator):
-        print("Just to hide the line error")
 
     # Create Mixed to Improper function
     def MixedToImproper():
@@ -81,9 +79,7 @@ def main():
         input("Press enter to continue...")
 
     # Create Simplify function
-    def Simplify():
-        Numerator = CheckInt("Numerator")
-        Denominator = CheckInt("Denominator", AllowZero=False)
+    def Simplify(Numerator, Denominator, ShowMessage=True):
         Denominator, Numerator = SignFlip(Denominator, Numerator)
 
         CommonDivisor = math.gcd(Numerator, Denominator)
@@ -94,8 +90,9 @@ def main():
             print(f"{SimplifiedNumerator}")
 
         elif CommonDivisor == 1:
-            print("This fraction is already in its simplest form!")
-            print(f"{Numerator}/{Denominator}")
+            if ShowMessage:
+                print("This fraction is already in its simplest form!")
+                print(f"{Numerator}/{Denominator}")
 
         else:
             print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
@@ -135,21 +132,61 @@ def main():
 
     # Create addition function
     def Addition():
-        FirstNumerator = CheckInt("first numerator")
-        FirstDenominator = CheckInt("first denominator", AllowZero=False)
-        SecondNumerator = CheckInt("second numerator")
-        SecondDenominator = CheckInt("second denominator", AllowZero=False)
+        FirstNumerator = CheckInt("First numerator")
+        FirstDenominator = CheckInt("First denominator", AllowZero=False)
+        SecondNumerator = CheckInt("Second numerator")
+        SecondDenominator = CheckInt("Second denominator", AllowZero=False)
         
         if FirstDenominator == SecondDenominator:
             ResultNumerator = FirstNumerator + SecondNumerator
-            print(f"{ResultNumerator}/{FirstDenominator}")
+            Simplify(ResultNumerator, FirstDenominator, ShowMessage=False)
         else:
-            
+            CommonDenominator = math.lcm(FirstDenominator, SecondDenominator)
+            CommonFirstNumerator = FirstNumerator * (CommonDenominator // FirstDenominator)
+            CommonSecondNumerator = SecondNumerator * (CommonDenominator // SecondDenominator)
+            FinalNumerator = CommonFirstNumerator + CommonSecondNumerator
+            Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
 
+    # Create Subtraction function
+    def Subtraction():
+        FirstNumerator = CheckInt("First numerator")
+        FirstDenominator = CheckInt("First denominator", AllowZero=False)
+        SecondNumerator = CheckInt("Second numerator")
+        SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+        
+        if FirstDenominator == SecondDenominator:
+            ResultNumerator = FirstNumerator - SecondNumerator
+            Simplify(ResultNumerator, FirstDenominator, ShowMessage=False)
+        else:
+            CommonDenominator = math.lcm(FirstDenominator, SecondDenominator)
+            CommonFirstNumerator = FirstNumerator * (CommonDenominator // FirstDenominator)
+            CommonSecondNumerator = SecondNumerator * (CommonDenominator // SecondDenominator)
+            FinalNumerator = CommonFirstNumerator - CommonSecondNumerator
+            Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
+    
+    # Create Multiplication function
+    def Multiplication():
+        FirstNumerator = CheckInt("First numerator")
+        FirstDenominator = CheckInt("First denominator", AllowZero=False)
+        SecondNumerator = CheckInt("Second numerator")
+        SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+        FinalDenominator = FirstDenominator * SecondDenominator
+        FinalNumerator = FirstNumerator * SecondNumerator
+        Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
+        
+    # Create Division function
+    def Division():
+        FirstNumerator = CheckInt("First numerator")
+        FirstDenominator = CheckInt("First denominator", AllowZero=False)
+        SecondNumerator = CheckInt("Second numerator")
+        SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+        FinalDenominator = FirstDenominator * SecondNumerator
+        FinalNumerator = FirstNumerator * SecondDenominator
+        Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
 
     # Create arithmatic options menu
     def Arithmatic():
-        print("This mode is currently under development!")
+        print("!!This mode is currently under development!!")
         input("Press enter to continue...")
         
         ArithmaticMode = int(input("Please select an arithmatic mode:\n1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Return to main menu\n"))
@@ -173,18 +210,20 @@ def main():
             print("Please input a number")
         input("Press enter to continue...")
 
-        if mode == 1:
+        if Mode == 1:
             MixedToImproper()
-        if mode == 2:
+        if Mode == 2:
             ImproperToMixed()
-        if mode == 3:
-            Simplify()
-        if mode == 4:
+        if Mode == 3:
+            Numerator = CheckInt("Numerator")
+            Denominator = CheckInt("Denominator", AllowZero=False)
+            Simplify(Numerator, Denominator)
+        if Mode == 4:
             FractionToDecimal()
-        if mode == 5:
+        if Mode == 5:
             DecimalToFraction()
-        if mode == 6:
+        if Mode == 6:
             print("Exiting...")
             time.sleep(0.3)
-            exit(0)
+            sys.exit(0)
 main()
