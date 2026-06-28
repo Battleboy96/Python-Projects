@@ -146,6 +146,7 @@ def main():
             CommonSecondNumerator = SecondNumerator * (CommonDenominator // SecondDenominator)
             FinalNumerator = CommonFirstNumerator + CommonSecondNumerator
             Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
+        input("Press enter to continue...")
 
     # Create Subtraction function
     def Subtraction():
@@ -163,7 +164,8 @@ def main():
             CommonSecondNumerator = SecondNumerator * (CommonDenominator // SecondDenominator)
             FinalNumerator = CommonFirstNumerator - CommonSecondNumerator
             Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
-    
+        input("Press enter to continue...")
+
     # Create Multiplication function
     def Multiplication():
         FirstNumerator = CheckInt("First numerator")
@@ -173,7 +175,8 @@ def main():
         FinalDenominator = FirstDenominator * SecondDenominator
         FinalNumerator = FirstNumerator * SecondNumerator
         Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
-        
+        input("Press enter to continue...")
+
     # Create Division function
     def Division():
         FirstNumerator = CheckInt("First numerator")
@@ -183,11 +186,11 @@ def main():
         FinalDenominator = FirstDenominator * SecondNumerator
         FinalNumerator = FirstNumerator * SecondDenominator
         Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
-
+        input("Press enter to continue...")
+        
     # Create arithmatic options menu
     def Arithmatic():
-        print("!!This mode is currently under development!!")
-        input("Press enter to continue...")
+
         
         ArithmaticMode = int(input("Please select an arithmatic mode:\n1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Return to main menu\n"))
         if ArithmaticMode == 1:
