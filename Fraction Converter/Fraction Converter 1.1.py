@@ -190,7 +190,6 @@ def main():
         
     # Create arithmatic options menu
     def Arithmatic():
-
         
         ArithmaticMode = int(input("Please select an arithmatic mode:\n1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Return to main menu\n"))
         if ArithmaticMode == 1:
