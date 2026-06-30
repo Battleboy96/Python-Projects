@@ -204,8 +204,8 @@ def main():
     # Mode Select
     while True:
         try:
-            Mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Decimal to Fraction\n6: Exit\n"))
-            if Mode < 1 or Mode > 6:
+            Mode = int(input("Please select a mode:\n1: Mixed to Improper\n2: Improper to Mixed\n3: Simplify\n4: Fraction to Decimal\n5: Decimal to Fraction\n6: Arithmatic\n7: Exit\n"))
+            if Mode < 1 or Mode > 7:
                 print("Please select a valid mode")
                 continue
         except ValueError:
@@ -224,6 +224,8 @@ def main():
         if Mode == 5:
             DecimalToFraction()
         if Mode == 6:
+            Arithmatic()
+        if Mode == 7:
             print("Exiting...")
             time.sleep(0.3)
             os.quit(0)
