@@ -93,6 +93,8 @@ def main():
             if ShowMessage:
                 print("This fraction is already in its simplest form!")
                 print(f"{Numerator}/{Denominator}")
+            else:
+                print(f"{Numerator}/{Denominator}")
 
         else:
             print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
