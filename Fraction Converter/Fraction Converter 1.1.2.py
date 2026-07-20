@@ -213,22 +213,22 @@ def main():
         except ValueError:
             print("Please input a number")
 
-        if Mode == 1:
-            MixedToImproper()
-        if Mode == 2:
+    if Mode == 1:
+        MixedToImproper()
+    if Mode == 2:
             ImproperToMixed()
-        if Mode == 3:
-            Numerator = CheckInt("Numerator")
-            Denominator = CheckInt("Denominator", AllowZero=False)
-            Simplify(Numerator, Denominator)
-        if Mode == 4:
-            FractionToDecimal()
-        if Mode == 5:
-            DecimalToFraction()
-        if Mode == 6:
-            Arithmatic()
-        if Mode == 7:
-            print("Exiting...")
-            time.sleep(0.3)
-            os.quit(0)
+    if Mode == 3:
+        Numerator = CheckInt("Numerator")
+        Denominator = CheckInt("Denominator", AllowZero=False)
+        Simplify(Numerator, Denominator)
+    if Mode == 4:
+        FractionToDecimal()
+    if Mode == 5:
+        DecimalToFraction()
+    if Mode == 6:
+        Arithmatic()
+    if Mode == 7:
+        print("Exiting...")
+        time.sleep(0.3)
+        os._exit(0)
 main()
