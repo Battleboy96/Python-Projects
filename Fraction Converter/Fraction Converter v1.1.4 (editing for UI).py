@@ -91,7 +91,7 @@ def main():
 
         elif CommonDivisor == 1:
             if ShowMessage:
-                return("This fraction is already in its simplest form!"), (f"{Numerator}/{Denominator}")
+                return(f"This fraction is already in its simplest form!\n{Numerator}/{Denominator}")
             else:
                 return(f"{Numerator}/{Denominator}")
 
