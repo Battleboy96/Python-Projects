@@ -18,7 +18,7 @@ def main():
 
                 if not AllowZero and Variable == 0:
                     print("Error: This number cannot be zero.")
-                    continue # Loops back to try again without crashing or exiting!
+                    continue
 
                 return Variable
             except ValueError:
@@ -87,16 +87,17 @@ def main():
         SimplifiedDenominator = Denominator // CommonDivisor
 
         if SimplifiedDenominator == 1:
-            return(f"{SimplifiedNumerator}")
+            print(f"{SimplifiedNumerator}")
 
         elif CommonDivisor == 1:
             if ShowMessage:
-                return("This fraction is already in its simplest form!"), (f"{Numerator}/{Denominator}")
+                print("This fraction is already in its simplest form!")
+                print(f"{Numerator}/{Denominator}")
             else:
-                return(f"{Numerator}/{Denominator}")
+                print(f"{Numerator}/{Denominator}")
 
         else:
-            return(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
+            print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
 
     # Create Fraction to Decimal function
     def FractionToDecimal():
