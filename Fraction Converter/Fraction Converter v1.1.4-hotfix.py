@@ -87,18 +87,16 @@ def main():
         SimplifiedDenominator = Denominator // CommonDivisor
 
         if SimplifiedDenominator == 1:
-            print(f"{SimplifiedNumerator}")
+            return(f"{SimplifiedNumerator}")
 
         elif CommonDivisor == 1:
             if ShowMessage:
-                print("This fraction is already in its simplest form!")
-                print(f"{Numerator}/{Denominator}")
+                return("This fraction is already in its simplest form!"), (f"{Numerator}/{Denominator}")
             else:
-                print(f"{Numerator}/{Denominator}")
+                return(f"{Numerator}/{Denominator}")
 
         else:
-            print(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
-        input("Press enter to continue...")
+            return(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
 
     # Create Fraction to Decimal function
     def FractionToDecimal():
@@ -210,25 +208,25 @@ def main():
             if Mode < 1 or Mode > 7:
                 print("Please select a valid mode")
                 continue
+            else:
+                if Mode == 1:
+                    MixedToImproper()
+                elif Mode == 2:
+                    ImproperToMixed()
+                elif Mode == 3:
+                    Numerator = CheckInt("Numerator")
+                    Denominator = CheckInt("Denominator", AllowZero=False)
+                    Simplify(Numerator, Denominator)
+                elif Mode == 4:
+                    FractionToDecimal()
+                elif Mode == 5:
+                    DecimalToFraction()
+                elif Mode == 6:
+                    Arithmatic()
+                elif Mode == 7:
+                    print("Exiting...")
+                    time.sleep(0.3)
+                    os._exit(0)
         except ValueError:
             print("Please input a number")
-
-    if Mode == 1:
-        MixedToImproper()
-    if Mode == 2:
-            ImproperToMixed()
-    if Mode == 3:
-        Numerator = CheckInt("Numerator")
-        Denominator = CheckInt("Denominator", AllowZero=False)
-        Simplify(Numerator, Denominator)
-    if Mode == 4:
-        FractionToDecimal()
-    if Mode == 5:
-        DecimalToFraction()
-    if Mode == 6:
-        Arithmatic()
-    if Mode == 7:
-        print("Exiting...")
-        time.sleep(0.3)
-        os._exit(0)
 main()
