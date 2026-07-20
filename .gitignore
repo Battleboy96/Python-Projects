@@ -4,3 +4,4 @@ dist/
 changes.txt
 .vscode
 Some Game.txt
+__pycache__/**/*
