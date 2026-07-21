@@ -1,12 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+import FractionTools as ft
 
 root = tk.Tk()
 root.title("Fraction Converter")
 root.geometry("400x350")
 
-ImproperMixedFrame = ttk.Frame(root)
-ImproperMixedFrame.pack(fill="both", expand=True)
+IMConversionFrame = ttk.Frame(root)
+IMConversionFrame.pack(fill="both", expand=True)
+
+ImproperMixedFrame = ttk.Frame(IMConversionFrame)
+ImproperMixedFrame.pack(pady=20, padx=10, fill="both", expand=True)
 
 WholeFrame = ttk.Frame(ImproperMixedFrame)
 WholeFrame.pack(pady=70, padx=10, side="left", anchor="n")
@@ -28,5 +32,21 @@ DenominatorInput = ttk.Entry(DenominatorFrame)
 DenominatorInput.pack()
 DenominatorHint = ttk.Label(DenominatorFrame, text="Denominator", foreground="grey", font=("Arial", 10, "italic"))
 DenominatorHint.pack(pady=5)
+
+
+
+def OnButtonClickMtI():
+    MixedWhole = int(ImproperWholeInput.get())
+    MixedNumerator = int(NumeratorInput.get())
+    MixedDenominator = int(DenominatorInput.get())
+
+    Result = ft.MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator)
+    ImproperOutput.config(text=str(Result))
+
+ConvertButton = ttk.Button(ImproperMixedFrame, text="Convert Mixed to Improper", command=OnButtonClickMtI)
+ConvertButton.pack(pady=20)
+
+ImproperOutput = ttk.Label(ImproperMixedFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
+ImproperOutput.pack(pady=10)
 
 root.mainloop()

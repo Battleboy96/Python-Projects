@@ -42,18 +42,18 @@ NumeratorInput.pack(pady=10)
 DenominatorInput = ttk.Entry(SimplifyFrame)
 DenominatorInput.pack(pady=10)
 
-ButtonSimplify = ttk.Button(SimplifyFrame, text="Simplify")
-ButtonSimplify.pack(pady=10)
-
-SimplifiedOutput = ttk.Label(SimplifyFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
-SimplifiedOutput.pack(pady=10)
-
-def OnButtonClick():
+def OnButtonClickSimplify():
     Numerator = int(NumeratorInput.get())
     Denominator = int(DenominatorInput.get())
 
     Result = ft.Simplify(Numerator, Denominator, ShowMessage=True)
     SimplifiedOutput.config(text=str(Result))
 
-ButtonSimplify.config(command=OnButtonClick)
+ButtonSimplify = ttk.Button(SimplifyFrame, text="Simplify", command=OnButtonClickSimplify)
+ButtonSimplify.pack(pady=10)
+
+SimplifiedOutput = ttk.Label(SimplifyFrame, text="", font=("Arial", 12), foreground="black", justify="center")
+SimplifiedOutput.pack(pady=10)
+
+
 root.mainloop()

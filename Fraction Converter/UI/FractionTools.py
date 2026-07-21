@@ -1,18 +1,12 @@
 import math
 import fractions
 
-def CheckInt(type, AllowZero=True):
-    while True:
-        try:
-            Variable = int(input(f"Please input the {type}: "))
-
-            if not AllowZero and Variable == 0:
-                print("Error: This number cannot be zero.")
-                continue
-
-            return Variable
-        except ValueError:
-            print("Please input a number")
+def CheckInt(EntryField, AllowZero=True):
+    Variable = int(EntryField.get())
+    if not AllowZero and Variable == 0:
+        raise ValueError
+    else:
+        return Variable
 
 def SignFlip(Denominator, Numerator):
     if Denominator < 0:
@@ -21,7 +15,7 @@ def SignFlip(Denominator, Numerator):
     return Denominator, Numerator
 
 # Create Mixed to Improper function
-def MixedToImproper():
+def MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator):
     MixedWhole = CheckInt("whole number")
     MixedNumerator = CheckInt("Numerator")
     MixedDenominator = CheckInt("Denominator", AllowZero=False)
@@ -35,11 +29,9 @@ def MixedToImproper():
     ImproperNumerator = AbsWhole * AbsDenominator + AbsNumerator
     
     if IsNegative == True:
-        print(f"-{ImproperNumerator}/{AbsDenominator}")
+        return(f"-{ImproperNumerator}/{AbsDenominator}")
     else:
-        print(f"{ImproperNumerator}/{AbsDenominator}")
-
-    input("Press enter to continue...")
+        return(f"{ImproperNumerator}/{AbsDenominator}")
 
 # Create Improper to Mixed function
 def ImproperToMixed():
