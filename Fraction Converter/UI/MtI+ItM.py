@@ -14,31 +14,29 @@ ImproperMixedFrame.pack(pady=20, padx=10, fill="both", expand=True)
 
 WholeFrame = ttk.Frame(ImproperMixedFrame)
 WholeFrame.pack(pady=70, padx=10, side="left", anchor="n")
-ImproperWholeInput = ttk.Entry(WholeFrame)
-ImproperWholeInput.pack()
+WholeInput = ttk.Entry(WholeFrame)
+WholeInput.pack()
 WholeHint = ttk.Label(WholeFrame, text="Whole Number", foreground="grey", font=("Arial", 10, "italic"))
 WholeHint.pack(pady=5)
 
 NumeratorFrame = ttk.Frame(ImproperMixedFrame)
 NumeratorFrame.pack(pady=30, padx=10)
-NumeratorInput = ttk.Entry(NumeratorFrame)
-NumeratorInput.pack()
+MixedNumeratorInput = ttk.Entry(NumeratorFrame)
+MixedNumeratorInput.pack()
 NumeratorHint = ttk.Label(NumeratorFrame, text="Numerator", foreground="grey", font=("Arial", 10, "italic"))
 NumeratorHint.pack(pady=5)
 
 DenominatorFrame = ttk.Frame(ImproperMixedFrame)
 DenominatorFrame.pack(pady=5, padx=10)
-DenominatorInput = ttk.Entry(DenominatorFrame)
-DenominatorInput.pack()
+MixedDenominatorInput = ttk.Entry(DenominatorFrame)
+MixedDenominatorInput.pack()
 DenominatorHint = ttk.Label(DenominatorFrame, text="Denominator", foreground="grey", font=("Arial", 10, "italic"))
 DenominatorHint.pack(pady=5)
 
-
-
 def OnButtonClickMtI():
-    MixedWhole = int(ImproperWholeInput.get())
-    MixedNumerator = int(NumeratorInput.get())
-    MixedDenominator = int(DenominatorInput.get())
+    MixedWhole = WholeInput.get()
+    MixedNumerator = MixedNumeratorInput.get()
+    MixedDenominator = MixedDenominatorInput.get()
 
     Result = ft.MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator)
     ImproperOutput.config(text=str(Result))

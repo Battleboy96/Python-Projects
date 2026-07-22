@@ -2,7 +2,7 @@ import math
 import fractions
 
 def CheckInt(EntryField, AllowZero=True):
-    Variable = int(EntryField.get())
+    Variable = int(EntryField)
     if not AllowZero and Variable == 0:
         raise ValueError
     else:
@@ -16,15 +16,15 @@ def SignFlip(Denominator, Numerator):
 
 # Create Mixed to Improper function
 def MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator):
-    MixedWhole = CheckInt("whole number")
-    MixedNumerator = CheckInt("Numerator")
-    MixedDenominator = CheckInt("Denominator", AllowZero=False)
+    MixedWholeInt = CheckInt(MixedWhole)
+    MixedNumeratorInt = CheckInt(MixedNumerator)
+    MixedDenominatorInt = CheckInt(MixedDenominator, AllowZero=False)
 
-    IsNegative = (MixedWhole < 0) or (MixedNumerator < 0) or (MixedDenominator < 0)
+    IsNegative = (MixedWholeInt < 0) or (MixedNumeratorInt < 0) or (MixedDenominatorInt < 0)
 
-    AbsWhole = abs(MixedWhole)
-    AbsNumerator = abs(MixedNumerator)
-    AbsDenominator = abs(MixedDenominator)
+    AbsWhole = abs(MixedWholeInt)
+    AbsNumerator = abs(MixedNumeratorInt)
+    AbsDenominator = abs(MixedDenominatorInt)
 
     ImproperNumerator = AbsWhole * AbsDenominator + AbsNumerator
     
