@@ -34,31 +34,30 @@ def MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator):
         return(f"{ImproperNumerator}/{AbsDenominator}")
 
 # Create Improper to Mixed function
-def ImproperToMixed():
-    ImproperNumerator = CheckInt("Numerator")
-    ImproperDenominator = CheckInt("Denominator", AllowZero=False)
+def ImproperToMixed(ImproperNumerator, ImproperDenominator):
+    ImproperNumeratorInt = CheckInt(ImproperNumerator)
+    ImproperDenominatorInt = CheckInt(ImproperDenominator, AllowZero=False)
 
-    if (ImproperNumerator < 0) != (ImproperDenominator < 0):
+    if (ImproperNumeratorInt < 0) != (ImproperDenominatorInt < 0):
         IsNegative = True
     else:
         IsNegative = False
 
-    AbsNumerator = abs(ImproperNumerator)
-    AbsDenominator = abs(ImproperDenominator)
+    AbsNumerator = abs(ImproperNumeratorInt)
+    AbsDenominator = abs(ImproperDenominatorInt)
     Quotient, Remainder = divmod(AbsNumerator, AbsDenominator)
     if Remainder == 0:
         if IsNegative:
-            print(f"-{Quotient}")
+            return(f"-{Quotient}")
 
         else:
-            print(Quotient)
+            return(Quotient)
 
     else:
         if IsNegative == True:
-            print(f"-{Quotient} and {Remainder}/{AbsDenominator}")
+            return(f"-{Quotient} and {Remainder}/{AbsDenominator}")
         else:
-            print(f"{Quotient} and {Remainder}/{AbsDenominator}")
-    input("Press enter to continue...")
+            return(f"{Quotient} and {Remainder}/{AbsDenominator}")
 
 # Create Simplify function
 def Simplify(Numerator, Denominator, ShowMessage=True):
