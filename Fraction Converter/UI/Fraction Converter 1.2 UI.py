@@ -55,11 +55,17 @@ ButtonSimplify.pack(pady=10)
 SimplifiedOutput = ttk.Label(SimplifyFrame, text="", font=("Arial", 12), foreground="black", justify="center")
 SimplifiedOutput.pack(pady=10)
 
-# Add the Mixed to Improper Frame
+# Add the Mixed <-> Improper Frame
 IMConversionFrame = ttk.Frame(root)
 
 ButtonBack = ttk.Button(IMConversionFrame, text="Back", command=lambda: BackCommand(IMConversionFrame))
 ButtonBack.pack(padx=10, side="top", anchor="nw")
+
+# To be completed later.
+# ButtonSwitch = ttk.Button(IMConversionFrame, text="Switch Conversion", command=lambda: [
+    
+# )
+# ButtonSwitch.pack(pady=10, side="top", anchor="ne")
 
 ImproperMixedFrame = ttk.Frame(IMConversionFrame)
 ImproperMixedFrame.pack(pady=20, padx=10, fill="both", expand=True)
@@ -98,4 +104,10 @@ ConvertButton.pack(pady=20)
 
 ImproperOutput = ttk.Label(ImproperMixedFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
 ImproperOutput.pack(pady=10)
+
+MtIConversionFrame = ttk.Frame(IMConversionFrame)
+
+ImproperNumeratorFrame = ttk.Frame(MtIConversionFrame)
+ImproperNumeratorFrame.pack(pady=10)
+
 root.mainloop()
