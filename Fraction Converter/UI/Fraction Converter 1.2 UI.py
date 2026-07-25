@@ -63,7 +63,7 @@ ButtonBack.pack(padx=10, side="top", anchor="nw")
 
 # To be completed later.
 # ButtonSwitch = ttk.Button(IMConversionFrame, text="Switch Conversion", command=lambda: [
-    
+
 # )
 # ButtonSwitch.pack(pady=10, side="top", anchor="ne")
 
