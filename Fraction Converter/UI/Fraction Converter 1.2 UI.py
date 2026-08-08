@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import FractionTools as ft
+from tkinter import messagebox
 
 def BackCommand(CurrentFrame):
     CurrentFrame.pack_forget()
@@ -21,7 +22,7 @@ WelcomeLabel = ttk.Label(MainMenuFrame, text="Welcome to the Fraction Converter!
 WelcomeLabel.pack(pady=20)
 
 # Add the Menu Buttons
-OptionSimplify = ttk.Button(MainMenuFrame, text="1. Simplify Fraction", command=lambda: [MainMenuFrame.pack_forget(), SimplifyFrame.pack(fill="both", expand=True)])
+OptionSimplify = ttk.Button(MainMenuFrame, text="1. Simplify Fraction", command=lambda: ft.MenuButton(SimplifyFrame, MainMenuFrame))
 OptionSimplify.pack(fill="x", pady=5, ipady=10)
 
 OptionArithmetic = ttk.Button(MainMenuFrame, text="2. Arithmetic Operations")
@@ -30,7 +31,7 @@ OptionArithmetic.pack(fill="x", pady=5, ipady=10)
 OptionConversion = ttk.Button(MainMenuFrame, text="3. Decimal / Fraction Conversion")
 OptionConversion.pack(fill="x", pady=5, ipady=10)
 
-OptionMixed = ttk.Button(MainMenuFrame, text="4. Mixed / Improper Conversion", command=lambda: [MainMenuFrame.pack_forget(), IMConversionFrame.pack(fill="both", expand=True)])
+OptionMixed = ttk.Button(MainMenuFrame, text="4. Mixed / Improper Conversion", command=lambda: ft.MenuButton(IMConversionFrame, MainMenuFrame))
 OptionMixed.pack(fill="x", pady=5, ipady=10)
 
 # Add the Simplify Frame
@@ -47,7 +48,10 @@ def OnButtonClickSimplify():
     Denominator = int(DenominatorInput.get())
 
     Result = ft.Simplify(Numerator, Denominator, ShowMessage=True)
-    SimplifiedOutput.config(text=str(Result))
+    if Result == ValueError:
+        messagebox.showwarning("Error", f"This fraction is already in its simplest form! {Numerator}/{Denominator}")
+    else:
+        SimplifiedOutput.config(text=str(Result))
 
 ButtonSimplify = ttk.Button(SimplifyFrame, text="Simplify", command=OnButtonClickSimplify)
 ButtonSimplify.pack(pady=10)
@@ -97,7 +101,6 @@ MixedOutput.pack(pady=10)
 
 # Mixed to Improper Conversion Frame
 MixedImproperFrame = ttk.Frame(IMConversionFrame)
-MixedImproperFrame.pack(pady=20, padx=10, fill="both", expand=True)
 
 WholeFrame = ttk.Frame(MixedImproperFrame)
 WholeFrame.pack(pady=50, padx=10, side="left", anchor="n")

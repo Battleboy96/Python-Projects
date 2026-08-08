@@ -72,7 +72,7 @@ def Simplify(Numerator, Denominator, ShowMessage=True):
 
     elif CommonDivisor == 1:
         if ShowMessage:
-            return(f"This fraction is already in its simplest form!\n{Numerator}/{Denominator}")
+            return ValueError
         else:
             return(f"{Numerator}/{Denominator}")
 
@@ -94,22 +94,19 @@ def FractionToDecimal():
     input("Press enter to continue...")
 
 # Create Decimal to Fraction function
-def DecimalToFraction():
+def DecimalToFraction(Decimal):
     while True:
-        Decimal = input("Please input a decimal number: ")
-        
+        Decimal = Decimal
+
         try:
             ConvertedFraction = fractions.Fraction(Decimal)
             Numerator = ConvertedFraction.numerator
             Denominator = ConvertedFraction.denominator
 
         except ValueError:
-            print("Please input a valid decimal number")
-            continue
+            return ValueError
 
-        print(f"{Numerator}/{Denominator}")
-        input("Press enter to continue...")
-        return
+        return(f"{Numerator}/{Denominator}")
 
 # Create addition function
 def Addition():
@@ -177,3 +174,8 @@ def SwitchFrames(Frame1, Frame2):
     elif Frame2.winfo_viewable():
         Frame2.pack_forget()
         Frame1.pack(pady=20, padx=10, fill="both", expand=True)
+        
+# Menu Button
+def MenuButton(MenuName, MainMenuFrame):
+    MainMenuFrame.pack_forget()
+    MenuName.pack(pady=20, padx=10, fill="both", expand=True)
