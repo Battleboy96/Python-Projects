@@ -168,3 +168,12 @@ def Division():
     FinalNumerator = FirstNumerator * SecondDenominator
     Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
     input("Press enter to continue...")
+
+# Frame Switch Function
+def SwitchFrames(Frame1, Frame2):
+    if Frame1.winfo_viewable():
+        Frame1.pack_forget()
+        Frame2.pack(pady=20, padx=10, fill="both", expand=True)
+    elif Frame2.winfo_viewable():
+        Frame2.pack_forget()
+        Frame1.pack(pady=20, padx=10, fill="both", expand=True)

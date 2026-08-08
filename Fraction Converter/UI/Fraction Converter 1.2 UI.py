@@ -61,30 +61,59 @@ IMConversionFrame = ttk.Frame(root)
 ButtonBack = ttk.Button(IMConversionFrame, text="Back", command=lambda: BackCommand(IMConversionFrame))
 ButtonBack.pack(padx=10, side="top", anchor="nw")
 
-# To be completed later.
-# ButtonSwitch = ttk.Button(IMConversionFrame, text="Switch Conversion", command=lambda: [
-    
-# )
-# ButtonSwitch.pack(pady=10, side="top", anchor="ne")
+ButtonSwitch = ttk.Button(IMConversionFrame, text="Switch Conversion", command=lambda: ft.SwitchFrames(MixedImproperFrame, ImproperMixedFrame))
+ButtonSwitch.pack(pady=10, side="top", anchor="ne")
 
+# Improper to Mixed Conversion Frame
 ImproperMixedFrame = ttk.Frame(IMConversionFrame)
 ImproperMixedFrame.pack(pady=20, padx=10, fill="both", expand=True)
 
-WholeFrame = ttk.Frame(ImproperMixedFrame)
-WholeFrame.pack(pady=70, padx=10, side="left", anchor="n")
+NumeratorFrame = ttk.Frame(ImproperMixedFrame)
+NumeratorFrame.pack(pady=30, padx=10)
+ImproperNumeratorInput = ttk.Entry(NumeratorFrame)
+ImproperNumeratorInput.pack()
+NumeratorHint = ttk.Label(NumeratorFrame, text="Numerator", foreground="grey", font=("Arial", 10, "italic"))
+NumeratorHint.pack(pady=5)
+
+DenominatorFrame = ttk.Frame(ImproperMixedFrame)
+DenominatorFrame.pack(pady=5, padx=10)
+ImproperDenominatorInput = ttk.Entry(DenominatorFrame)
+ImproperDenominatorInput.pack()
+DenominatorHint = ttk.Label(DenominatorFrame, text="Denominator", foreground="grey", font=("Arial", 10, "italic"))
+DenominatorHint.pack(pady=5)
+
+def OnButtonClickItM():
+    ImproperNumerator = ImproperNumeratorInput.get()
+    ImproperDenominator = ImproperDenominatorInput.get()
+
+    Result = ft.ImproperToMixed(ImproperNumerator, ImproperDenominator)
+    MixedOutput.config(text=str(Result))
+
+ConvertButton = ttk.Button(ImproperMixedFrame, text="Convert Improper to Mixed", command=OnButtonClickItM)
+ConvertButton.pack(pady=20)
+
+MixedOutput = ttk.Label(ImproperMixedFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
+MixedOutput.pack(pady=10)
+
+# Mixed to Improper Conversion Frame
+MixedImproperFrame = ttk.Frame(IMConversionFrame)
+MixedImproperFrame.pack(pady=20, padx=10, fill="both", expand=True)
+
+WholeFrame = ttk.Frame(MixedImproperFrame)
+WholeFrame.pack(pady=50, padx=10, side="left", anchor="n")
 WholeInput = ttk.Entry(WholeFrame)
 WholeInput.pack()
 WholeHint = ttk.Label(WholeFrame, text="Whole Number", foreground="grey", font=("Arial", 10, "italic"))
 WholeHint.pack(pady=5)
 
-NumeratorFrame = ttk.Frame(ImproperMixedFrame)
-NumeratorFrame.pack(pady=30, padx=10)
+NumeratorFrame = ttk.Frame(MixedImproperFrame)
+NumeratorFrame.pack(pady=10, padx=10)
 MixedNumeratorInput = ttk.Entry(NumeratorFrame)
 MixedNumeratorInput.pack()
 NumeratorHint = ttk.Label(NumeratorFrame, text="Numerator", foreground="grey", font=("Arial", 10, "italic"))
 NumeratorHint.pack(pady=5)
 
-DenominatorFrame = ttk.Frame(ImproperMixedFrame)
+DenominatorFrame = ttk.Frame(MixedImproperFrame)
 DenominatorFrame.pack(pady=5, padx=10)
 MixedDenominatorInput = ttk.Entry(DenominatorFrame)
 MixedDenominatorInput.pack()
@@ -99,10 +128,10 @@ def OnButtonClickMtI():
     Result = ft.MixedToImproper(MixedWhole, MixedNumerator, MixedDenominator)
     ImproperOutput.config(text=str(Result))
 
-ConvertButton = ttk.Button(ImproperMixedFrame, text="Convert Mixed to Improper", command=OnButtonClickMtI)
+ConvertButton = ttk.Button(MixedImproperFrame, text="Convert Mixed to Improper", command=OnButtonClickMtI)
 ConvertButton.pack(pady=20)
 
-ImproperOutput = ttk.Label(ImproperMixedFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
+ImproperOutput = ttk.Label(MixedImproperFrame, text="0", font=("Arial", 12), foreground="black", justify="center")
 ImproperOutput.pack(pady=10)
 
 MtIConversionFrame = ttk.Frame(IMConversionFrame)
