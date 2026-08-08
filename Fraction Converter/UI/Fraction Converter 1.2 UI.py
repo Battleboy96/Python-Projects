@@ -69,7 +69,7 @@ ImproperMixedFrame = ttk.Frame(IMConversionFrame)
 ImproperMixedFrame.pack(pady=20, padx=10, fill="both", expand=True)
 
 NumeratorFrame = ttk.Frame(ImproperMixedFrame)
-NumeratorFrame.pack(pady=30, padx=10)
+NumeratorFrame.pack(pady=10, padx=10)
 ImproperNumeratorInput = ttk.Entry(NumeratorFrame)
 ImproperNumeratorInput.pack()
 NumeratorHint = ttk.Label(NumeratorFrame, text="Numerator", foreground="grey", font=("Arial", 10, "italic"))
