@@ -80,24 +80,20 @@ def Simplify(Numerator, Denominator, ShowMessage=True):
         return(f"{SimplifiedNumerator}/{SimplifiedDenominator}")
 
 # Create Fraction to Decimal function
-def FractionToDecimal():
-    Numerator = CheckInt("Numerator")
-    Denominator = CheckInt("Denominator", AllowZero=False)
+def FractionToDecimal(Numerator, Denominator):
+    Numerator = CheckInt(Numerator)
+    Denominator = CheckInt(Denominator, AllowZero=False)
     Denominator, Numerator = SignFlip(Denominator, Numerator)
     
     if Denominator == 0:
-        print("Error: Denominator cannot be zero.")
-        input("Press enter to continue...")
-        return
-    decimal = Numerator / Denominator
-    print(f"{round(decimal, 4)}")
-    input("Press enter to continue...")
+        return ValueError
+
+    Decimal = Numerator / Denominator
+    return(f"{round(Decimal, 4)}")
 
 # Create Decimal to Fraction function
 def DecimalToFraction(Decimal):
     while True:
-        Decimal = Decimal
-
         try:
             ConvertedFraction = fractions.Fraction(Decimal)
             Numerator = ConvertedFraction.numerator
@@ -170,10 +166,10 @@ def Division():
 def SwitchFrames(Frame1, Frame2):
     if Frame1.winfo_viewable():
         Frame1.pack_forget()
-        Frame2.pack(pady=20, padx=10, fill="both", expand=True)
+        Frame2.pack(pady=10, padx=10, fill="both", expand=True)
     elif Frame2.winfo_viewable():
         Frame2.pack_forget()
-        Frame1.pack(pady=20, padx=10, fill="both", expand=True)
+        Frame1.pack(pady=10, padx=10, fill="both", expand=True)
         
 # Menu Button
 def MenuButton(MenuName, MainMenuFrame):
