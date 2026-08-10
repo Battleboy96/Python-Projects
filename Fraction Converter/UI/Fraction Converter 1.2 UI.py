@@ -3,19 +3,20 @@ from tkinter import ttk
 import FractionTools as ft
 from tkinter import messagebox
 
-def BackCommand(CurrentFrame):
-    CurrentFrame.pack_forget()
-    MainMenuFrame.pack(fill="both", expand=True)
+def BackCommand(CurrentFrame, Arithmatic=False):
+    if not Arithmatic:
+        CurrentFrame.pack_forget()
+        MainMenuFrame.pack(fill="both", expand=True)
+    if Arithmatic:
+        CurrentFrame.pack_forget()
+        ArithmaticFrame.pack(fill="both", expand=True)
 
 root = tk.Tk()
 root.title("Fraction Converter")
 root.geometry("400x350")
 
-# Create Frames for each screen
-MainMenuFrame = ttk.Frame(root)
-SimplifyFrame = ttk.Frame(root)
-
 # Pack the Main Menu Frame
+MainMenuFrame = ttk.Frame(root)
 MainMenuFrame.pack(fill="both", expand=True)
 
 WelcomeLabel = ttk.Label(MainMenuFrame, text="Welcome to the Fraction Converter!", font=("Arial", 14, "bold"))
@@ -25,7 +26,7 @@ WelcomeLabel.pack(pady=20)
 OptionSimplify = ttk.Button(MainMenuFrame, text="1. Simplify Fraction", command=lambda: ft.MenuButton(SimplifyFrame, MainMenuFrame))
 OptionSimplify.pack(fill="x", pady=5, ipady=10)
 
-OptionArithmetic = ttk.Button(MainMenuFrame, text="2. Arithmetic Operations")
+OptionArithmetic = ttk.Button(MainMenuFrame, text="2. Arithmetic Operations", command=lambda: ft.MenuButton(ArithmaticFrame, MainMenuFrame))
 OptionArithmetic.pack(fill="x", pady=5, ipady=10)
 
 OptionConversion = ttk.Button(MainMenuFrame, text="3. Decimal / Fraction Conversion", command=lambda: ft.MenuButton(DFConversionFrame, MainMenuFrame))
@@ -35,6 +36,8 @@ OptionMixed = ttk.Button(MainMenuFrame, text="4. Mixed / Improper Conversion", c
 OptionMixed.pack(fill="x", pady=5, ipady=10)
 
 # Add the Simplify Frame
+SimplifyFrame = ttk.Frame(root)
+
 ButtonBack = ttk.Button(SimplifyFrame, text="Back", command=lambda: BackCommand(SimplifyFrame))
 ButtonBack.pack(padx=10, side="top", anchor="nw")
 
@@ -144,7 +147,6 @@ ImproperNumeratorFrame.pack(pady=10)
 
 # Add the Decimal <-> Fraction Conversion Frame
 DFConversionFrame = ttk.Frame(root)
-DFConversionFrame.pack(pady=20, padx=10, fill="both", expand=True) # Temprary pack for testing purposes
 
 ButtonBack = ttk.Button(DFConversionFrame, text="Back", command=lambda: BackCommand(DFConversionFrame))
 ButtonBack.pack(padx=10, side="top", anchor="nw")
@@ -217,4 +219,90 @@ OutputFrame.pack(pady=10, padx=10, fill="both", expand=True)
 DecimalOutput = ttk.Label(OutputFrame, text="0.0", font=("Arial", 12))
 DecimalOutput.pack()
 
+# Arithmatic Operations Frame
+ArithmaticFrame = ttk.Frame(root)
+
+WelcomeLabel = ttk.Label(ArithmaticFrame, text="Arithmatic Options", font=("Arial", 14, "bold"))
+WelcomeLabel.pack(pady=20)
+
+ButtonBack = ttk.Button(ArithmaticFrame, text="Back", command=lambda: BackCommand(ArithmaticFrame))
+ButtonBack.pack(padx=10, side="top", anchor="nw")
+
+Addition = ttk.Button(ArithmaticFrame, text="1. Addition", command=lambda: ft.MenuButton(AdditionFrame, ArithmaticFrame))
+Addition.pack(fill="x", pady=5, ipady=10)
+
+Subtraction = ttk.Button(ArithmaticFrame, text="2. Subtraction", command=lambda: ft.MenuButton(Subtraction, ArithmaticFrame))
+Subtraction.pack(fill="x", pady=5, ipady=10)
+
+Division = ttk.Button(ArithmaticFrame, text="3. Division", command=lambda: ft.MenuButton(Division, ArithmaticFrame))
+Division.pack(fill="x", pady=5, ipady=10)
+
+Multiplication = ttk.Button(ArithmaticFrame, text="4. Multiplication", command=lambda: ft.MenuButton(Multiplication, ArithmaticFrame))
+Multiplication.pack(fill="x", pady=5, ipady=10)
+
+# Addition Frame
+AdditionFrame = ttk.Frame(root)
+
+ButtonBack = ttk.Button(AdditionFrame, text="Back", command=lambda: BackCommand(AdditionFrame, Arithmatic=True))
+ButtonBack.pack(padx=10, side="top", anchor="nw")
+
+EquationFrame = ttk.Frame(AdditionFrame)
+EquationFrame.pack(pady=10, padx=10, anchor="center")
+
+# Create Fraction 1 Frame
+Fraction1Frame = ttk.Frame(EquationFrame)
+Fraction1Frame.pack(pady=10, padx=10, side="left", anchor="w")
+
+# Create Numerator 1 Frame
+Numerator1Frame = ttk.Frame(Fraction1Frame)
+Numerator1Frame.pack(padx=10, pady=10, )
+Numerator1Hint = ttk.Label(Numerator1Frame, text="Numerator 1:", font=("Arial", 10, "italic"), foreground="grey")
+Numerator1Hint.pack(padx=5, pady=5, side="top")
+Numerator1Input = ttk.Entry(Numerator1Frame)
+Numerator1Input.pack(side="top", padx=5)
+
+# Create Denominator 1 Frame
+Denominator1Frame = ttk.Frame(Fraction1Frame)
+Denominator1Frame.pack(padx=10, pady=10, )
+Denominator1Hint = ttk.Label(Denominator1Frame, text="Denominator 1:", font=("Arial", 10, "italic"), foreground="grey")
+Denominator1Hint.pack(padx=5, pady=5, side="top")
+Denominator1Input = ttk.Entry(Denominator1Frame)
+Denominator1Input.pack(side="top", padx=5)
+
+PlusSign = ttk.Label(EquationFrame, text="+", font=("Arial", 14, "bold"))
+PlusSign.pack(pady=10, padx=10, side="left", anchor="center")
+
+# Create Fraction 2 Frame
+Fraction2Frame = ttk.Frame(EquationFrame)
+Fraction2Frame.pack(pady=10, side="left", anchor="e")
+
+# Create Numerator 2 Frame
+Numerator2Frame = ttk.Frame(Fraction2Frame)
+Numerator2Frame.pack(pady=10, padx=10, )
+Numerator2Hint = ttk.Label(Numerator2Frame, text="Numerator 2:", font=("Arial", 10, "italic"), foreground="grey")
+Numerator2Hint.pack(padx=5, pady=5, side="top")
+Numerator2Input = ttk.Entry(Numerator2Frame)
+Numerator2Input.pack(side="top", padx=5)
+
+# Create Denominator 2 Frame
+Denominator2Frame = ttk.Frame(Fraction2Frame)
+Denominator2Frame.pack(pady=10, padx=10, )
+Denominator2Hint = ttk.Label(Denominator2Frame, text="Denominator 2:", font=("Arial", 10, "italic"), foreground="grey")
+Denominator2Hint.pack(padx=5, pady=5, side="top")
+Denominator2Input = ttk.Entry(Denominator2Frame)
+Denominator2Input.pack(side="top", padx=5)
+
+def OnButtonClickAddition():
+    FirstNumerator = int(Numerator1Input.get())
+    FirstDenominator = int(Denominator1Input.get())
+    SecondNumerator = int(Numerator2Input.get())
+    SecondDenominator = int(Denominator2Input.get())
+    result = ft.Addition(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator)
+    OutputLabel.config(text=str(result))
+
+OutputLabel = ttk.Label(AdditionFrame, text="0", font=("Arial", 12))
+OutputLabel.pack(pady=5, padx=5)
+
+AddButton =ttk.Button(AdditionFrame, text="Add", command=OnButtonClickAddition)
+AddButton.pack(pady=10, padx=10)
 root.mainloop()
