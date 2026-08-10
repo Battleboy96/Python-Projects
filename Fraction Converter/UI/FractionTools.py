@@ -1,5 +1,6 @@
 import math
 import fractions
+from tkinter import ttk
 
 def CheckInt(EntryField, AllowZero=True):
     Variable = int(EntryField)
@@ -171,3 +172,8 @@ def SwitchFrames(Frame1, Frame2):
 def MenuButton(MenuName, MainMenuFrame):
     MainMenuFrame.pack_forget()
     MenuName.pack(pady=20, padx=10, fill="both", expand=True)
+
+def HintLabel(HintText, ParentFrame):
+    HintLabel = ttk.Label(ParentFrame, text=HintText, font=("Arial", 10, "italic"), foreground="grey", justify="center")
+    HintLabel.pack(pady=5)
+    return HintLabel
