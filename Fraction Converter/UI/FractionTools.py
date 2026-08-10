@@ -122,22 +122,21 @@ def Addition(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominato
         return Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
 
 # Create Subtraction function
-def Subtraction():
-    FirstNumerator = CheckInt("First numerator")
-    FirstDenominator = CheckInt("First denominator", AllowZero=False)
-    SecondNumerator = CheckInt("Second numerator")
-    SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+def Subtraction(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator):
+    FirstNumerator = CheckInt(FirstNumerator)
+    FirstDenominator = CheckInt(FirstDenominator, AllowZero=False)
+    SecondNumerator = CheckInt(SecondNumerator)
+    SecondDenominator = CheckInt(SecondDenominator, AllowZero=False)
 
     if FirstDenominator == SecondDenominator:
         ResultNumerator = FirstNumerator - SecondNumerator
-        Simplify(ResultNumerator, FirstDenominator, ShowMessage=False)
+        return Simplify(ResultNumerator, FirstDenominator, ShowMessage=False)
     else:
         CommonDenominator = math.lcm(FirstDenominator, SecondDenominator)
         CommonFirstNumerator = FirstNumerator * (CommonDenominator // FirstDenominator)
         CommonSecondNumerator = SecondNumerator * (CommonDenominator // SecondDenominator)
         FinalNumerator = CommonFirstNumerator - CommonSecondNumerator
-        Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
-    input("Press enter to continue...")
+        return Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
 
 # Create Multiplication function
 def Multiplication():
