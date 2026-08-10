@@ -139,26 +139,24 @@ def Subtraction(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenomin
         return Simplify(FinalNumerator, CommonDenominator, ShowMessage=False)
 
 # Create Multiplication function
-def Multiplication():
-    FirstNumerator = CheckInt("First numerator")
-    FirstDenominator = CheckInt("First denominator", AllowZero=False)
-    SecondNumerator = CheckInt("Second numerator")
-    SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+def Multiplication(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator):
+    FirstNumerator = CheckInt(FirstNumerator)
+    FirstDenominator = CheckInt(FirstDenominator, AllowZero=False)
+    SecondNumerator = CheckInt(SecondNumerator)
+    SecondDenominator = CheckInt(SecondDenominator, AllowZero=False)
     FinalDenominator = FirstDenominator * SecondDenominator
     FinalNumerator = FirstNumerator * SecondNumerator
-    Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
-    input("Press enter to continue...")
+    return Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
 
 # Create Division function
-def Division():
-    FirstNumerator = CheckInt("First numerator")
-    FirstDenominator = CheckInt("First denominator", AllowZero=False)
-    SecondNumerator = CheckInt("Second numerator")
-    SecondDenominator = CheckInt("Second denominator", AllowZero=False)
+def Division(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator):
+    FirstNumerator = CheckInt(FirstNumerator)
+    FirstDenominator = CheckInt(FirstDenominator, AllowZero=False)
+    SecondNumerator = CheckInt(SecondNumerator)
+    SecondDenominator = CheckInt(SecondDenominator, AllowZero=False)
     FinalDenominator = FirstDenominator * SecondNumerator
     FinalNumerator = FirstNumerator * SecondDenominator
-    Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
-    input("Press enter to continue...")
+    return Simplify(FinalNumerator, FinalDenominator, ShowMessage=False)
 
 # Frame Switch Function
 def SwitchFrames(Frame1, Frame2):
