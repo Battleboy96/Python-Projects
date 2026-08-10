@@ -5,15 +5,15 @@ import FractionTools as ft
 def BackCommand(arg, Arithmatic=False):
     print("temp")
 
-# Create Division Frame
-DivisionFrame = tk.Tk()
-DivisionFrame.title("Division Menu")
-DivisionFrame.geometry("400x350")
+# Create Multiplication Frame
+MultiplicationFrame = tk.Tk()
+MultiplicationFrame.title("Multiplication Menu")
+MultiplicationFrame.geometry("400x350")
 
-ButtonBack = ttk.Button(DivisionFrame, text="Back", command=lambda: BackCommand(DivisionFrame, Arithmatic=True))
+ButtonBack = ttk.Button(MultiplicationFrame, text="Back", command=lambda: BackCommand(MultiplicationFrame, Arithmatic=True))
 ButtonBack.pack(padx=10, side="top", anchor="nw")
 
-EquationFrame = ttk.Frame(DivisionFrame)
+EquationFrame = ttk.Frame(MultiplicationFrame)
 EquationFrame.pack(pady=10, padx=10, anchor="center")
 
 # Create Fraction 1 Frame
@@ -36,8 +36,8 @@ Denominator1Hint.pack(padx=5, pady=5, side="top")
 Denominator1Input = ttk.Entry(Denominator1Frame)
 Denominator1Input.pack(side="top", padx=5)
 
-DivisionSign = ttk.Label(EquationFrame, text="÷", font=("Arial", 14, "bold"))
-DivisionSign.pack(pady=10, padx=10, side="left", anchor="center")
+MultiplicationSign = ttk.Label(EquationFrame, text="x", font=("Arial", 14, "bold"))
+MultiplicationSign.pack(pady=10, padx=10, side="left", anchor="center")
 
 # Create Fraction 2 Frame
 Fraction2Frame = ttk.Frame(EquationFrame)
@@ -59,18 +59,18 @@ Denominator2Hint.pack(padx=5, pady=5, side="top")
 Denominator2Input = ttk.Entry(Denominator2Frame)
 Denominator2Input.pack(side="top", padx=5)
 
-def OnButtonClickDivision():
+def OnButtonClickMultiplication():
     FirstNumerator = int(Numerator1Input.get())
     FirstDenominator = int(Denominator1Input.get())
     SecondNumerator = int(Numerator2Input.get())
     SecondDenominator = int(Denominator2Input.get())
-    result = ft.Division(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator)
+    result = ft.Multiplication(FirstNumerator, FirstDenominator, SecondNumerator, SecondDenominator)
     OutputLabel.config(text=str(result))
 
-OutputLabel = ttk.Label(DivisionFrame, text="0", font=("Arial", 12))
+OutputLabel = ttk.Label(MultiplicationFrame, text="0", font=("Arial", 12))
 OutputLabel.pack(pady=5, padx=5)
 
-DivideButton =ttk.Button(DivisionFrame, text="Divide", command=OnButtonClickDivision)
-DivideButton.pack(pady=10, padx=10)
+MultiplyButton =ttk.Button(MultiplicationFrame, text="Multiply", command=OnButtonClickMultiplication)
+MultiplyButton.pack(pady=10, padx=10)
 
-DivisionFrame.mainloop()
+MultiplicationFrame.mainloop()
