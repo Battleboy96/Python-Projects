@@ -28,5 +28,8 @@ pip3 install int-checker
 
 I'm super proud of my first module and hope it shows it's use to others. I may or may not update it so if you use it or think there are some features I could add, let me know!
 
+## Quick and Dirty File Sorter
+I've tried to make a file sorting program that sorts files into subfolders by extention. Right now it doesn't support more than two extentions or dots in the file name or having more than two files with the same name going into one folder, which to be honest is hard to do since you can't have two files of the same name in the same folder to sort anyway (I just realised that). It simply takes the names of files in a folder, looks at the extentions, makes a folder with that extention as the name, and moves it in. It checks if somehow it has more than one of the same named file in the folder and add "_copy" to the end of the name before the extention. I might add a simple UI because it seems easy enough.
+
 ## Conclusion
 Let me know what else I should make and enjoy what I have, I guess!
