@@ -1,6 +1,3 @@
-import subprocess
+import adbpytools
 
-try: 
-    subprocess.run(["adb", "install"], check=True)
-except subprocess.CalledProcessError:
-    print(f"Error occurred while installing APK. See above")
+adbpytools.Logcat()
